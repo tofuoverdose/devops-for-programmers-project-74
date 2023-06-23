@@ -4,9 +4,8 @@ services:
   app:
     build: 
       context: .
-      dockerfile: ./Dockerfile
-    volumes:
-      - ./app:/app
+      dockerfile: ./Dockerfile.production
+    image: segrishanin/devops-for-programmers-project-74:latest
     command: npm test
 
       
