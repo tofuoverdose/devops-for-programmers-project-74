@@ -1,0 +1,21 @@
+name: ci
+
+on:
+    push:
+        branches:
+            - main
+
+jobs:
+    test:
+        runs-on: ubuntu-latest
+        steps:
+            - 
+                name: Git Checkout
+                uses: actions/checkout@v3
+            -
+                name: Run Testing Compose
+                uses: isbang/compose-action@v1.4.1
+                with:
+                    compose-file: "./docker-compose.yml"
+                    up-flags: "--abort-on-container-exit"
+                    services: app
