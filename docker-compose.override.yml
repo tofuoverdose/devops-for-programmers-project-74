@@ -1,10 +1,13 @@
 services:
   app:
-    command: npm run dev
+    command: bash -c 'sleep 10 && npm run dev'
     ports:
       - "8080:8080"
     volumes:
       - ./app:/app
+    env_file:
+      - ${PWD}/.env
+
   caddy:
     image: caddy:2.6.4-alpine
     restart: unless-stopped
