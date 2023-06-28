@@ -14,8 +14,18 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - 
-                name: Git Checkout
+                name: Git checkout
                 uses: actions/checkout@v3
+            -
+                name: Make env file
+                run: |
+                    touch .env
+                    echo DATABASE_HOST = db >> .env
+                    echo DATABASE_PORT = 5432 >> .env
+                    echo DATABASE_NAME = fastify >> .env
+                    echo DATABASE_USERNAME = user >> .env
+                    echo DATABASE_PASSWORD = password >> .env
+                    cat .env
             -
                 name: Run Compose with tests
                 uses: isbang/compose-action@v1.4.1

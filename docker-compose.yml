@@ -9,6 +9,8 @@ services:
     command: npm test
     depends_on:
       - db
+    env_file:
+      - ${PWD}/.env
 
   db:
     image: postgres:15.3
