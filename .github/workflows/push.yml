@@ -31,8 +31,7 @@ jobs:
                 uses: isbang/compose-action@v1.4.1
                 with:
                     compose-file: "./docker-compose.yml"
-                    compose-flags: "--build"
-                    up-flags: "--abort-on-container-exit"
+                    up-flags: "--abort-on-container-exit --build"
                     services: app
 
     docker:
