@@ -9,6 +9,12 @@ services:
     command: npm test
     depends_on:
       - db
+    environment:
+      DATABASE_HOST: ${DATABASE_HOST}
+      DATABASE_PORT: ${DATABASE_PORT}
+      DATABASE_NAME: ${DATABASE_NAME}
+      DATABASE_USERNAME: ${DATABASE_USERNAME}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
     env_file:
       - .env
 
@@ -16,8 +22,8 @@ services:
     image: postgres:15.3
     restart: always
     environment:
-        POSTGRES_DB: fastify
-        POSTGRES_USER: user
-        POSTGRES_PASSWORD: password
+        POSTGRES_DB: ${DATABASE_NAME}
+        POSTGRES_USER: ${DATABASE_USERNAME}
+        POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
 
       
