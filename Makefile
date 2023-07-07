@@ -11,3 +11,11 @@ test:
 
 dev:
 	docker-compose up --exit-code-from app
+
+### Ansible
+
+ans-deps:
+	@ansible-galaxy install -r requirements.yml
+
+ans-play: ans-deps
+	@ansible-playbook -i inventory.ini playbook.yml

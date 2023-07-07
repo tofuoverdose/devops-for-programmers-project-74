@@ -1,0 +1,21 @@
+---
+- name: prepare system
+  hosts: all
+  tasks:
+  
+    - name: install pip using apt
+      apt: 
+        name:
+          - python-pip
+          - python3-pip
+        state: present
+        update_cache: yes
+      become: yes
+
+- name: install docker module using pip3
+  hosts: all
+  roles:
+    - geerlingguy.pip
+  vars:
+    pip_install_packages:
+      - name: docker

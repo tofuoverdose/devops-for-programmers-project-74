@@ -10,6 +10,7 @@
 - docker-compose version 1.27.0 or higher;
 - make;
 - node.js version 14 for development;
+- ansible for servers provisioning;
 
 ## Local deployment
 First, copy `.env.example` file and rename it to `.env`, fill with values appropriate to your environment.
@@ -21,3 +22,6 @@ Available docker releases: https://hub.docker.com/repository/docker/segrishanin/
 
 ## CI/CD
 Push to branch `main` triggers the pipeline that builds and publishes the new `latest` docker image.
+
+## Setup servers
+Run `make ans-play` to provision servers.
