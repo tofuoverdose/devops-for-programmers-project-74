@@ -2,9 +2,9 @@
 - name: prepare system
   hosts: all
   tasks:
-  
+
     - name: install pip using apt
-      apt: 
+      apt:
         name:
           - python-pip
           - python3-pip
@@ -19,3 +19,23 @@
   vars:
     pip_install_packages:
       - name: docker
+
+- name: start serving redmine on nodes
+  hosts: all
+  tasks:
+    
+    - name: run docker container
+      docker_container:
+        name: redmine_app
+        image: redmine:latest
+        published_ports: 
+          - 80:3000
+        restart_policy: always
+        detach: true
+        env:
+          REDMINE_DB_POSTGRES: "{{ redmine_db_addr }}"
+          REDMINE_DB_PORT: "{{ redmine_db_port }}"
+          REDMINE_DB_DATABASE: "{{ redmine_db_database }}"
+          REDMINE_DB_USERNAME: "{{ redmine_db_username }}"
+          REDMINE_DB_PASSWORD: "{{ redmine_db_password }}"
+          REDMINE_SECRET_KEY_BASE: "{{ redmine_secret_key_base }}"

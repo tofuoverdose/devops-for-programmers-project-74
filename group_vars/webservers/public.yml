@@ -1,0 +1,4 @@
+---
+redmine_db_addr: lin-24563-9008-pgsql-primary-private.servers.linodedb.net
+redmine_db_port: "5432"
+redmine_db_password: OFiC&W12yy5ssogO

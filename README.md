@@ -24,4 +24,6 @@ Available docker releases: https://hub.docker.com/repository/docker/segrishanin/
 Push to branch `main` triggers the pipeline that builds and publishes the new `latest` docker image.
 
 ## Setup servers
+First obtain an ansible-value password and put it in `.vault_pass`. 
+
 Run `make ans-play` to provision servers.
